@@ -1,0 +1,23 @@
+// This file contains a list of applications to block.
+// This is opened and read every time a process starts.
+// Some applications are filtered through with no relation on this list.
+// The blocking is valid for applications that loads user32.dll at start.
+// Programs that do not dynamically link to user32.dll won't be affected.
+
+// Write down accurate excutable names or uncomment lines below.
+// Size of this file has no limit but each line cannot exceed 128 bytes.
+// Be aware that module names are case sensitive.
+// Don't forget to add ".exe" or ".EXE" at the end of the names.
+
+// All responsibility lies with a user configuring and using this utility.
+// A developer is not responsible for any of side effects or dangerousness.
+// Modifying this file is considered as consent to these terms.
+
+
+
+// ============================= Change here ===============================
+// EXCEL.EXE
+// POWERPNT.EXE
+// WINWORD.EXE
+// Hwp.exe
+// IEXPLORE.EXE
