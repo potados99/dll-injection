@@ -1,5 +1,5 @@
 # dll-injection
-###### inject specific code to every process ######
+###### Inject specific code to every process. ######
 
 ## What it does
 This utility prevents startup of applications in a list.
