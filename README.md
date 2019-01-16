@@ -14,7 +14,7 @@ In that function, it checks if current module name exists in blist file and if t
 
 ## Install
 
-When you launch `install` which points `setup.batch` with "install" argument, 
+When you launch `install` in `injection_dist` which points `setup.batch` with "install" argument, 
 
 the script will do these things:
 
