@@ -1,5 +1,5 @@
 # dll-injection
-###### Inject specific code to every process. ######
+###### Invisible fear. ######
 
 ## What it does
 This utility prevents startup of applications in a list.
