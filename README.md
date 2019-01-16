@@ -1,8 +1,12 @@
 # dll-injection
+###### inject specific code to every process ######
 
 ## What it does
+This utility prevents startup of applications in a list.
 
-This DLL is loaded by user32.dll when AppInit_DLLs is set.
+A DLL is loaded by user32.dll when AppInit_DLLs is set.
+
+It means that every application using user32.dll is affected by it.
 
 For every process, the DLL is attached and DllMain function is called.
 
