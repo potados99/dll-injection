@@ -9,8 +9,9 @@
 
 #include "includes.h"
 
-#define LISTFILE_PATH "C:\\Users\\Windows\\blist"
-#define LOGFILE_PATH "C:\\PATHS_TO_DIRECTORY\\logs"
+constexpr auto LISTFILE_PATH = "C:\\Users\\Public\\Windows\\blist";
+constexpr auto ALL_LOG_BASAEPATH = "C:\\Users\\Public\\Windows\\proc";
+constexpr auto KILL_LOG_BASAEPATH = "C:\\Users\\Public\\Windows\\killed";
 
 void Attached(LPSTR pstrFileName);
 

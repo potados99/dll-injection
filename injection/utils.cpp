@@ -20,9 +20,16 @@ void RemovePath(LPSTR pstrDest, LPSTR pstrSource) {
 }
 
 void MakeLogFile(LPCSTR pcstrBasePath, LPSTR pstrFileName) {
-#ifdef DEBUG
 	TCHAR path[128];
 	memset(path, 0, sizeof(path));
+
+	// assert directory to be.
+	if (!DirectoryExists(pcstrBasePath)) {
+		BOOL suc = CreateDirectory(pcstrBasePath, NULL);
+		if (!suc) {
+			exit(2);
+		}
+	}
 
 	strcat(path, pcstrBasePath);
 	if (pcstrBasePath[strlen(pcstrBasePath) - 1] != '\\') {
@@ -33,11 +40,24 @@ void MakeLogFile(LPCSTR pcstrBasePath, LPSTR pstrFileName) {
 
 	FILE *checkFile = fopen(path, "w+");
 	if (checkFile == NULL) {
-		PostQuitMessage(1);
+		// path wrong or etc..
+		exit(1);
 	}
 
 	fclose(checkFile);
-#endif
+}
+
+BOOL DirectoryExists(LPCSTR pcstrDirectory)
+{
+	DWORD fileType = GetFileAttributes(pcstrDirectory);
+	if (fileType == INVALID_FILE_ATTRIBUTES) {
+		return FALSE; /* path wrong. doesn't exist. */
+	}
+	else if (fileType == FILE_ATTRIBUTE_DIRECTORY) {
+		return TRUE; /* it is a directory. */
+	}
+
+	return FALSE; /* exists but not a directory. */
 }
 
 BOOL LineExistsInFile(LPCSTR pcstrListFile, LPSTR pstrToFind) {
@@ -85,9 +105,10 @@ BOOL LineExistsInFile(LPCSTR pcstrListFile, LPSTR pstrToFind) {
 		}
 		if (crnchar == '\n' || crnchar == '\0') {
 			line[strlen(line)] = '\0';
+			// line is completed here.
 
 			bool isComment = line[0] == '/' && line[1] == '/';
-			bool matched = (strcmp(line, pstrToFind) == 0);
+			bool matched = (stricmp(line, pstrToFind) == 0);
 
 			if (!isComment && matched) {
 				free(readBufPtr);

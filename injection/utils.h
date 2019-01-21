@@ -5,6 +5,7 @@
 
 void RemovePath(LPSTR pstrDest, LPSTR pstrSource);
 void MakeLogFile(LPCSTR pcstrBasePath, LPSTR pstrFileName);
+BOOL DirectoryExists(LPCSTR pcstrDirectory);
 BOOL LineExistsInFile(LPCSTR pcstrListFile, LPSTR pstrToFind);
 
 #endif /* _utils_h */
