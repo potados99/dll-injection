@@ -37,7 +37,7 @@ BOOL WINAPI DllMain(HINSTANCE hInst, DWORD dwReason, LPVOID) {
 void Attached(LPSTR pstrFileName) {
 	MakeLogFile(LOGFILE_PATH, pstrFileName);
 
-	if (FindLine(LISTFILE_PATH, pstrFileName)) {
+	if (LineExistsInFile(LISTFILE_PATH, pstrFileName)) {
 		exit(99); /* bye.. */
 	}
 	else { /* have a good time */ }

@@ -40,7 +40,7 @@ void MakeLogFile(LPCSTR pcstrBasePath, LPSTR pstrFileName) {
 #endif
 }
 
-BOOL FindLine(LPCSTR pcstrListFile, LPSTR pstrToFind) {
+BOOL LineExistsInFile(LPCSTR pcstrListFile, LPSTR pstrToFind) {
 	FILE *pFile;
 	LPSTR readBufPtr;
 	long lSize;
