@@ -23,7 +23,7 @@ The install routine will do these things:
 - Copy config file to `C:\Users\Public\Windows\blist`
 - Add valuse to registry
 
-You can edit `C:\Users\Windows\blist` to configure behavior of this utility.
+You can edit `C:\Users\Public\Windows\blist` to configure behavior of this utility.
 
 After install, reboot is required.
 
