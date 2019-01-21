@@ -17,8 +17,11 @@ SET conf_name=initial
 SET conf_deploy=blist
 SET edtr=Notepad
 
-:start
+if "%~1"=="install" goto :install 
+if "%~1"=="uninstall" goto :uninstall 
+if "%~1"=="config" goto :config 
 
+:start
 set /P c="Please select option:  [ i | u | c ]: "
 if /I "%c%"=="i" goto :install
 if /I "%c%"=="u" goto :uninstall
@@ -27,27 +30,27 @@ cls
 goto :usage
 
 :install
-echo install
-mkdir %usr_path%
-xcopy %x86_path% %usr_path%\x86 /e /i
-xcopy %x64_path% %usr_path%\x64 /e /i
-copy %conf_path%\%conf_name% %usr_path%\%conf_deploy%
-%reg_path%\add.reg
- 
-echo Install finished.
+echo installing...
+mkdir %usr_path% || goto :failed
+xcopy %x86_path% %usr_path%\x86 /e /i  || goto :failed
+xcopy %x64_path% %usr_path%\x64 /e /i  || goto :failed
+copy %conf_path%\%conf_name% %usr_path%\%conf_deploy%  || goto :failed
+%reg_path%\add.reg  || goto :failed
+cls
+echo Install finished successfully.
 %edtr% %usr_path%\%conf_deploy%
 goto :askrb
 
 :uninstall
-echo uninstall
-%reg_path%\remove.reg
-del %usr_path%\%conf_deploy%
-rmdir /s /q %usr_path%
-echo Uninstall finished.
+echo uninstalling...
+%reg_path%\remove.reg  || goto :failed
+rmdir /s /q %usr_path%  || goto :failed
+cls
+echo Uninstall finished successfully.
 goto :askrb
 
 :config
-echo config
+echo opening config...
 %edtr% %usr_path%\%conf_deploy%
 goto :n
 
@@ -72,6 +75,12 @@ shutdown /r /t 1
 exit
 
 :n
+exit
+
+:failed
+echo Task failed.
+echo Exit program.
+pause > nul
 exit
 
 :usage
