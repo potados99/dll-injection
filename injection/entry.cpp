@@ -40,7 +40,7 @@ void Attached(LPSTR pstrFileName) {
 	if (LineExistsInFile(LISTFILE_PATH, pstrFileName)) {
 		MakeLogFile(KILLED_LOG_BASAEPATH, pstrFileName);
 
-		PostQuitMessage(1);
+		PostQuitMessage(99);
 	}
 	else { 
 		MakeLogFile(ALIVE_LOG_BASAEPATH, pstrFileName);
