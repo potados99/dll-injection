@@ -3,7 +3,7 @@
 void RemovePath(LPSTR pstrDest, LPSTR pstrSource) {
 	// assum pstrDest is cleared and pstrSource is null-terminated.
 
-	long sourceLen = strlen(pstrSource);
+	int sourceLen = (int)strlen(pstrSource);
 	for (int i = sourceLen - 1; i >= 0; --i) {
 		// from right index
 
