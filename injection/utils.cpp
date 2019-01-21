@@ -77,7 +77,7 @@ BOOL FindLine(LPCSTR pcstrListFile, LPSTR pstrToFind) {
 
 	memset(line, 0, sizeof(line));
 
-	for (int i = 0; i < strlen(readBufPtr) + 1; ++i) {
+	for (int i = 0; i < (int)strlen(readBufPtr) + 1; ++i) {
 		char crnchar = readBufPtr[i];
 
 		if (crnchar == ' ') {
