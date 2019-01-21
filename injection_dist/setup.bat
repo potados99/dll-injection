@@ -82,10 +82,11 @@ goto :commonExit
 :commonExit
 echo.
 
-set /P c="Please select option:  [ i | u | c ]: "
+set /P c="Please select option:  [ i | u | c | q ]: "
 if /I "%c%"=="i" goto :install
 if /I "%c%"=="u" goto :uninstall
 if /I "%c%"=="c" goto :config
+if /I "%c%"=="q" goto :end
 goto :usage
 
 :install
