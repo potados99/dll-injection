@@ -17,9 +17,9 @@ SET conf_name=initial
 SET conf_deploy=blist
 SET edtr=Notepad
 
-if "%~1"=="install" goto :install 
-if "%~1"=="uninstall" goto :uninstall 
-if "%~1"=="config" goto :config 
+if "%~1"=="i" goto :install 
+if "%~1"=="u" goto :uninstall 
+if "%~1"=="c" goto :config 
 
 :start
 set /P c="Please select option:  [ i | u | c ]: "

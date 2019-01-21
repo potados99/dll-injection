@@ -10,17 +10,18 @@ It means that every application using user32.dll is affected by it.
 
 For every process, the DLL is attached and DllMain function is called.
 
-In that function, it checks if current module name exists in blist file and if then, kills it.
+In that function, it checks if current module name exists in `blist` file and if then, kills it.
 
 ## Install
 
-When you launch `install` in `injection_dist` which points `setup.batch` with "install" argument, 
+Launch `setup.bat`, type `i`(install) and `Enter`.
 
-the script will do these things:
+The install routine will do these things:
 
-- Add valuse to registry 
-- Create Directory at `C:\Users\Windows`
-- Create config file at `C:\Users\Windows\blist`
+- Create Directory at `C:\Users\Public\Windows`
+- Copy `x86\injection.dll` and `x64\injection.dll` under `C:\Users\Public\Windows`.
+- Copy config file to `C:\Users\Public\Windows\blist`
+- Add valuse to registry
 
 You can edit `C:\Users\Windows\blist` to configure behavior of this utility.
 
@@ -28,9 +29,29 @@ After install, reboot is required.
 
 ## Uninstall
 
-Launch `uninstall`.
-Uninstall does opposite things the installer do, in a reversed order.
+Launch `setup.bat`, type `u`(uninstall) and `Enter`.
+
+The uninstall routine will:
+
+- Add empty value to registry.
+- Remove all files and directories at `C:\Users\Public\Windows`
 
 ## Config
 
-This opens `C:\Users\Windows\blist` with notepad as an administrator.
+Launch `setup.bat`, type `c`(config) and `Enter`.
+
+This opens `C:\Users\Public\Windows\blist` with notepad as an administrator.
+
+## Commandline Option
+
+The `setup.bat` recieves commandline argument too.
+
+Start it with an option.
+
+~~~
+setup [ i | u | c ]
+~~~
+
+# Others
+
+Working build target is x86(WinAPI).
